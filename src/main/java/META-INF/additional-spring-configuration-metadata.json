@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "shiro.logoutUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'shiro.logoutUrl'"
+  },
+  {
+    "name": "shiro.anon.paths",
+    "type": "java.lang.String",
+    "description": "A description for 'shiro.anon.paths'"
+  },
+  {
+    "name": "shiro.unauthorizedUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'shiro.unauthorizedUrl'"
+  },
+  {
+    "name": "shiro.success",
+    "type": "java.lang.String",
+    "description": "A description for 'shiro.success'"
+  },
+  {
+    "name": "shiro.logoutUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'shiro.logoutUrl'"
+  },
+  {
+    "name": "shiro.logoutUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'shiro.logoutUrl'"
+  },
+  {
+    "name": "shiro.unauthorizedUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'shiro.unauthorizedUrl'"
+  },
+  {
+    "name": "shiro.unauthorizedUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'shiro.unauthorizedUrl'"
+  }
+]}
