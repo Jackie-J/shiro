@@ -121,6 +121,7 @@ public class ShiroWebAutoConfiguration extends AbstractShiroWebConfiguration {
         webSessionManager.setGlobalSessionTimeout(globalSessionTimeout);
         webSessionManager.setDeleteInvalidSessions(sessionManagerDeleteInvalidSessions);
         webSessionManager.setSessionValidationSchedulerEnabled(sessionValidationSchedulerEnabled);
+        webSessionManager.setCacheManager(cacheManager());
         return webSessionManager;
     }
 
@@ -153,6 +154,9 @@ public class ShiroWebAutoConfiguration extends AbstractShiroWebConfiguration {
         return super.rememberMeCookieTemplate();
     }
 
+    /**
+     * 定义需要拦截和不需要拦截的路径
+     */
     @Bean
     @Override
     protected ShiroFilterChainDefinition shiroFilterChainDefinition() {
@@ -169,6 +173,10 @@ public class ShiroWebAutoConfiguration extends AbstractShiroWebConfiguration {
         return chainDefinition;
     }
 
+    /**
+     * 缓存处理，包括session，用户，权限
+     * @return
+     */
     @Bean
     protected CacheManager cacheManager() {
         EhCacheManager cacheManager = new EhCacheManager();
@@ -176,6 +184,10 @@ public class ShiroWebAutoConfiguration extends AbstractShiroWebConfiguration {
         return cacheManager;
     }
 
+    /**
+     * 定时任务，用来删除过期的session
+     * @return
+     */
     @Bean
     @ConditionalOnProperty(prefix = "shiro.sessionManager", name = "sessionValidationSchedulerEnabled", havingValue = "true")
     protected SessionValidationScheduler sessionValidationScheduler() {
@@ -187,6 +199,11 @@ public class ShiroWebAutoConfiguration extends AbstractShiroWebConfiguration {
         return sessionValidationScheduler;
     }
 
+    /**
+     * 登陆时获取用户信息和用户权限
+     * @param userService
+     * @return
+     */
     @Bean
     @Primary
     protected Realm customRealm(UserService userService) {
@@ -202,6 +219,10 @@ public class ShiroWebAutoConfiguration extends AbstractShiroWebConfiguration {
         return customRealm;
     }
 
+    /**
+     * 在登录时对密码进行加密
+     * @return
+     */
     @Bean
     protected CredentialsMatcher credentialsMatcher() {
         CustomHashedCredentialsMatcher credentialsMatcher = new CustomHashedCredentialsMatcher();
